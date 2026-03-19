@@ -1,3 +1,7 @@
 # Binary files that bloat up the repository so that it doesn't take 5 business days to commit.
 *.dll
 *.exe
+
+# Build stuff in case anybody decides to set it up later (which is probably going to be me) (just in case)
+build/
+dist/

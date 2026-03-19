@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include <random>
-#include <Windows.h>
 
 using sf::Vector2f;
 using sf::Vector2;
