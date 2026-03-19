@@ -1,10 +1,14 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
 #include <random>
+#include <Windows.h>
+
+using sf::Vector2f;
+using sf::Vector2;
+using sf::Color;
 
 // In pixels
-constexpr int WIDTH = 800;
-constexpr int HEIGHT = 600;
+constexpr int WIDTH = 1200;
+constexpr int HEIGHT = 800;
 
 int randint(int max, int min=1)
 {
@@ -16,15 +20,16 @@ int randint(int max, int min=1)
 
 int main() 
 {
-    using sf::Vector2f;
-
+    sf::Clock clock;
     sf::RenderWindow window(
-        sf::VideoMode({800, 600}),
+        sf::VideoMode({WIDTH, HEIGHT}),
         "Frank Boss Fight"
     );
-    sf::RectangleShape rect(sf::Vector2(200.f, 100.f));
+    sf::RectangleShape rect(Vector2(200.f, 100.f));
     rect.setPosition(Vector2f(300.f, 200.f));
-    rect.setFillColor(sf::Color::Magenta);
+    rect.setFillColor(Color::Magenta);
+    rect.setOutlineColor(Color::White);
+    rect.setOutlineThickness(5.f);
     
     while (window.isOpen()) {
         while (auto event = window.pollEvent()) {
@@ -34,6 +39,7 @@ int main()
         }
 
         window.clear();
+        window.draw(rect);
         window.display();
     }
 
