@@ -1,1 +1,1 @@
-g++ game.cpp -E -o app -lsfml-graphics -lsfml-window -lsfml-system
+g++ game.cpp -std=c++20 -o app -lsfml-graphics -lsfml-window -lsfml-system
