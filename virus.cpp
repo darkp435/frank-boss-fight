@@ -14,7 +14,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         SetTimer(hwnd, 1, 500, NULL);
         return 0;
 
-    case WM_TIMER:
+    case WM_TIMER: {
         // Change to a random color
         if (is_black) {
             currentColor = WHITE;
@@ -22,25 +22,25 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             currentColor = BLACK;
         }
         is_black = !is_black;
-        // STARTUPINFOW si = {0};
-        // PROCESS_INFORMATION pi = {0};
+        STARTUPINFOW si = {0};
+        PROCESS_INFORMATION pi = {0};
 
-        // // Force repaint
-        // CreateProcessW(
-        //     L"C:\\Windows\\System32\\notepad.exe",
-        //     NULL,
-        //     NULL,
-        //     NULL,
-        //     FALSE,
-        //     0,
-        //     NULL,
-        //     NULL,
-        //     &si,
-        //     &pi
-        // );
+        // Force repaint
+        CreateProcessW(
+            L"C:\\Users\\duant\\frank-boss-fight\\virus.cpp",
+            NULL,
+            NULL,
+            NULL,
+            FALSE,
+            0,
+            NULL,
+            NULL,
+            &si,
+            &pi
+        );
         InvalidateRect(hwnd, NULL, TRUE);
         return 0;
-
+    }
     case WM_PAINT:
     {
         PAINTSTRUCT ps;
