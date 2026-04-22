@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <random>
+#include <print>
 #include "debug.hpp"
 
 using sf::Vector2f;
