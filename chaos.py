@@ -4,7 +4,7 @@ import sys
 import keyboard
 import random
 
-KEY_AMOUNT = 100
+KEY_AMOUNT = 10
 
 # Singleton state obj because I can't be bothered making another python script
 class State:
@@ -40,4 +40,8 @@ keyboard.hook(on_key_press)
 while True:
     if state.get_keys_pressed() >= KEY_AMOUNT:
         break
-print(f"\033[91m{result.stderr}\033[0m")
+processed = result.stderr.replace("error", "fumble")
+processed = processed.replace("No such file or directory", "You tried to include a file that doesn't exist, genius.")
+processed = processed.replace("compilation terminated.", "fix your code then compile it again\n(tip: don't compile the exact same code again expecting it to work)")
+processed = processed.replace("expected ';'", "expected ';' and braincells")
+print(f"\033[91m{processed}\033[0m")
